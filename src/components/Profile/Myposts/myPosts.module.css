@@ -1,0 +1,21 @@
+.myp {
+    margin: 20px 50px;
+    position: relative;
+}
+
+.textarea {
+    width: 300px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.btn {
+    color: gold;
+    position: absolute;
+    bottom: 10px;
+    margin-left: 5px;
+}
+
+.post {
+    margin-left: 50px;
+}

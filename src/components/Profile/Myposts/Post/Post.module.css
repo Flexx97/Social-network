@@ -1,0 +1,21 @@
+.item {
+    border: 1px solid #00BFFF;
+    background-color: #00BFFF;
+    border-radius: 3px;
+    padding: 10px 10px 30px;
+}
+.block {
+    margin: 50px;
+    position: relative;
+}
+.likely {
+    position: absolute;
+    right: 5px;
+    bottom: 3px;
+    display: flex;
+    align-items: center;
+}
+.img {
+    width: 17px;
+    height: 17px;
+}

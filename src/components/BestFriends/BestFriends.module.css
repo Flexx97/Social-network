@@ -1,0 +1,15 @@
+.best {
+
+}
+.decor {
+    padding-bottom: 10px;
+}
+.frpos {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.img {
+    width: 25px;
+    height: 25px;
+    border-radius: 5px;
+}
