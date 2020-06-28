@@ -1,13 +1,8 @@
-const UPDATE_MESSAGE_TEXT = 'UPDATE_MESSAGE_TEXT'
 const ADD_TEXT = 'ADD_TEXT'
 
-export let updateMessageText = (newMes) => ({
-    type: UPDATE_MESSAGE_TEXT,
-    newMessage: newMes
-})
-
-export let addText = () => ({
-    type: ADD_TEXT
+export let addText = (value) => ({
+    type: ADD_TEXT,
+    value
 })
 
 let initialState = {
@@ -20,23 +15,16 @@ let initialState = {
         {message: 'what are you doing'},
         {message: 'You suck'}
     ],
-    updateMessage: '',
 }
 
 
 let messagePageReduce = (state = initialState, action) => {
 
     switch (action.type) {
-        case UPDATE_MESSAGE_TEXT:
-            return {
-                ...state,
-                updateMessage: action.newMessage
-            }
         case ADD_TEXT:
             return {
                 ...state,
-                MesData: [...state.MesData, {message: state.updateMessage}],
-                updateMessage: ''
+                MesData: [...state.MesData, {message: action.value.messageText}],
 
             }
         default:

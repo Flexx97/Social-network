@@ -1,78 +1,65 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {
-    follow,
-    getSetUsers,
-    pageUpdate,
-    setCountTotal, toggleLoad,
-    unFollow,
-    updateChangePage,
-    updateNumberPage, usersLoad
+    getUser, ChangePageUpdate,
+    followUserAction, unFollowUserAction
 } from "../../redux/users-reducer";
 import Users from "./Users";
-import * as axios from "axios";
 import Loader from "../common/loader/loader";
+import {
+    getFollowProgress,
+    getLoaded,
+    getPage,
+    getPageNumber,
+    getPageSize,
+    getTotalCount,
+    getUsersState
+} from "../../redux/reselect";
 
 class UsersContainerAPI extends React.Component {
 
     componentDidMount() {
-        this.props.usersLoad()
-        this.props.toggleLoad(true)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.pageNumber}&count=${this.props.PageSize}`).then(response => {
-            this.props.toggleLoad(false)
-            this.props.getSetUsers(response.data.items)
-            this.props.setCountTotal(response.data.totalCount)
-        })
+        this.props.getUser(this.props.pageNumber, this.props.PageSize)
     }
 
-    ChangePage = (u, newPage) => {
-        this.props.usersLoad()
-        this.props.toggleLoad(true)
-        this.props.updateChangePage(u)
-        this.props.updateNumberPage(newPage)
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${u}&count=${this.props.PageSize}`).then(response => {
-            this.props.toggleLoad(false)
-            this.props.getSetUsers(response.data.items)
-        })
+    updatePage = (u, newPage) => {
+        this.props.ChangePageUpdate(u, newPage, this.props.PageSize)
     }
 
 
     render() {
-        return  <div>
+        return <div>
             {this.props.loaded === true ? <Loader/> : null}
-        <Users page={this.props.page}
+            <Users page={this.props.page}
                    pageNumber={this.props.pageNumber}
                    userState={this.props.userState}
                    totalCount={this.props.totalCount}
                    PageSize={this.props.PageSize}
-                   ChangePage={this.ChangePage}
-                   follow={this.props.follow}
-                   unfollow={this.props.unFollow}
+                   updatePage={this.updatePage}
                    UpdateNumber={this.props.UpdateNumber}
+                   followProgress={this.props.followProgress}
+                   followUserAction={this.props.followUserAction}
+                   unFollowUserAction={this.props.unFollowUserAction}
             />
         </div>
     }
 }
 
 let mapStateToProps = (state) => ({
-    userState: state.UsersPage.users,
-    pageNumber: state.UsersPage.pageNumber,
-    PageSize: state.UsersPage.PageSize,
-    totalCount: state.UsersPage.totalCount,
-    page: state.UsersPage.page,
-    loaded: state.UsersPage.loaded
+    userState: getUsersState(state),
+    pageNumber: getPageNumber(state),
+    PageSize: getPageSize(state),
+    totalCount: getTotalCount(state),
+    page: getPage(state),
+    loaded: getLoaded(state),
+    followProgress: getFollowProgress(state)
 })
 
 let UsersContainer = connect(mapStateToProps, {
-    follow,
-    unFollow,
-    getSetUsers,
-    updateChangePage,
-    setCountTotal,
-    pageUpdate,
-    updateNumberPage,
-    toggleLoad,
-    usersLoad
+    getUser,
+    ChangePageUpdate,
+    followUserAction,
+    unFollowUserAction
 })(UsersContainerAPI);
 
 

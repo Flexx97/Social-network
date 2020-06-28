@@ -1,26 +1,17 @@
 import React from 'react';
-import {addText, updateMessageText} from "../../redux/Dialogs-reducer";
+import {addText} from "../../redux/Dialogs-reducer";
 import Dialogs from "./Dialogs";
 import {connect} from "react-redux";
+import {withRedirectLogin} from "../HOC-isAuth/hocRedirectLogin";
+import {compose} from "redux";
 
 let mapStateToProps = (state) => {
     return {
         newMessageWay: state.messagePage.MesData,
-        updateMessage: state.messagePage.updateMessage,
         Data: state.messagePage.Data
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        addMessageWay: () => {
-            dispatch(addText())
-        },
-        changeMessageWay: (message) => {
-            dispatch(updateMessageText(message))
-        }
-    }
-}
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps) (Dialogs);
-
-export default DialogsContainer;
+ export default compose(connect(mapStateToProps, {addText}),
+    withRedirectLogin
+)(Dialogs)

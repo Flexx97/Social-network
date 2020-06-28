@@ -4,3 +4,6 @@
     align-items: center;
     margin: 20px;
 }
+.status {
+    display: block;
+}

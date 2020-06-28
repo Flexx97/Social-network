@@ -2,18 +2,16 @@ import React from 'react';
 import dialogs from './Dialogs.module.css';
 import DialogsItem from "./DialogsItem/DialogsItem";
 import Message from "./Message/Message";
+import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../common/textarea";
+import {required} from "../utils/validators";
 
 
 const Dialogs = (props) => {
 
-    let mes = React.createRef();
-
-
-    let changeMessage = () => {
-        let message = mes.current.value
-        props.changeMessageWay(message)
+    let submit = (value) => {
+        props.addText(value)
     }
-
 
     let newData =
         props.Data.map(dialog =>
@@ -32,13 +30,26 @@ const Dialogs = (props) => {
             </div>
             <div className={dialogs.chats}>
                 {newMessage}
-                <div>
-                    <textarea onChange={ changeMessage } ref={mes} className={dialogs.send} value={props.updateMessage}/>
-                    <button onClick={props.addMessageWay} className={dialogs.btn}>send</button>
-                </div>
+                <DialogsReduxForm onSubmit={submit} />
             </div>
         </div>
     )
 };
+
+const SendMessage = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <Field component={Textarea} type='textarea' name='messageText' className={dialogs.send} validate={[required]} />
+            <button className={dialogs.btn}>send</button>   
+        </form>
+    )
+}
+
+let DialogsReduxForm = reduxForm({
+    form: 'messages'
+})(SendMessage)
+
+
+
 
 export default Dialogs;

@@ -1,12 +1,15 @@
+import {followUnfollow, usersAPI as UsersAPI} from "../components/API/api";
+
 const FOLLOW = 'FOLLOW',
-UNFOLLOW = 'UNFOLLOW',
-setUsers = 'SETUSERS',
-ChangePage = 'CHANGEPAGE',
-setTotalCount = 'SET_TOTAL_COUNT',
-updatePage = 'UPDATEPAGE',
-updatePageNumber = 'UPDATEPAGENUMBER',
-setLoading = 'TOGGLE_LOADING',
-loadUsers = 'LOAD_USERS'
+    UNFOLLOW = 'UNFOLLOW',
+    setUsers = 'SETUSERS',
+    ChangePage = 'CHANGEPAGE',
+    setTotalCount = 'SET_TOTAL_COUNT',
+    updatePage = 'UPDATEPAGE',
+    updatePageNumber = 'UPDATEPAGENUMBER',
+    setLoading = 'TOGGLE_LOADING',
+    loadUsers = 'LOAD_USERS',
+    toggleFollow = 'TOGGLE_FOLLOW_PROGRESS'
 
 export let follow = (userID) => ({
     type: FOLLOW,
@@ -44,13 +47,20 @@ export let usersLoad = () => ({
     type: loadUsers
 })
 
+export let toggleFollowProgress = (stateFollow, userId) => ({
+    type: toggleFollow,
+    stateFollow,
+    userId
+})
+
 let initialState = {
     users: [],
     pageNumber: 1,
     PageSize: 5,
     totalCount: 50,
     loaded: true,
-    page: [1, 2, 3, 4]
+    page: [1, 2, 3, 4],
+    isFollowedProgress: []
 }
 
 
@@ -112,8 +122,66 @@ let UsersReduce = (state = initialState, action) => {
                 ...state,
                 users: []
             }
+        case toggleFollow:
+            return {
+                ...state,
+                isFollowedProgress: action.stateFollow
+                    ? [...state.isFollowedProgress, action.userId]
+                    : state.isFollowedProgress.filter(id => id !== action.userId)
+            }
         default:
             return state
+    }
+}
+
+export const getUser = (pageNumber, PageSize) => {
+    return (dispatch) => {
+        dispatch(usersLoad())
+        dispatch(toggleLoad(true))
+        UsersAPI.getUsers(pageNumber, PageSize)
+            .then(data => {
+                dispatch(toggleLoad(false))
+                dispatch(getSetUsers(data.items))
+                dispatch(setCountTotal(data.totalCount))
+            })
+    }
+}
+export const ChangePageUpdate = (u, newPage, PageSize) => {
+    return (dispatch) => {
+        dispatch(usersLoad())
+        dispatch(toggleLoad(true))
+        dispatch(updateChangePage(u))
+        dispatch(updateNumberPage(newPage))
+        UsersAPI.getUsers(u, PageSize)
+            .then(data => {
+                dispatch(toggleLoad(false))
+                dispatch(getSetUsers(data.items))
+            })
+    }
+}
+export const followUserAction = (uId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowProgress(true, uId))
+        followUnfollow.unfollow(uId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(unFollow(uId))
+                    dispatch(toggleFollowProgress(false, uId))
+                }
+            })
+    }
+}
+
+export const unFollowUserAction = (uId) => {
+    return (dispatch) => {
+        dispatch(toggleFollowProgress(true, uId))
+        followUnfollow.follow(uId)
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    dispatch(follow(uId))
+                    dispatch(toggleFollowProgress(false, uId))
+                }
+            })
     }
 }
 
