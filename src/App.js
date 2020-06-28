@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Nav from "./components/Navbar/nav-bar";
-import {HashRouter, Route} from "react-router-dom";
+import {BrowserRouter, HashRouter, Route} from "react-router-dom";
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
@@ -13,7 +13,7 @@ import Login from "./components/Login/login";
 
 const App = () => {
     return (
-        <HashRouter>
+        <BrowserRouter>
             <div className='app-wrapper'>
                 <HeaderContainer/>
                 <Nav/>
@@ -29,7 +29,7 @@ const App = () => {
                     <Route path='/login' render={() => <Login/>}/>
                 </div>
             </div>
-        </HashRouter>
+        </BrowserRouter>
     );
 };
 
