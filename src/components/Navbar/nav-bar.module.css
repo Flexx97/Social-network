@@ -15,3 +15,15 @@ display: block;
 .best {
     margin-top: 50px;
 }
+
+@media (max-width: 544px) {
+    .item {
+        margin: 10px 7px;
+    }
+    .nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+    }
+    
+}

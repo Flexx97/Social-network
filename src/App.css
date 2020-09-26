@@ -3,8 +3,9 @@
     grid-template-areas: "header header header" "nav content content";
     display: grid;
     grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr;
+    grid-template-columns: 2fr 10fr; 
     width: 100%;
+    background-color: #856df8;
 }
 
 .app-wrapper-content {
@@ -14,4 +15,14 @@
 .material-icons {
     cursor: pointer;
 }
+body {
+    background-color: #856df8;
+    height: 100%;
+}
 
+@media (max-width: 544px) {
+    .app-wrapper {
+        grid-template-areas: "header header header" "content content content" "nav nav nav";
+        grid-template-rows: 60px 1fr 60px;
+    }
+}
