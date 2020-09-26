@@ -9,11 +9,12 @@ const Header = (props) => {
 
     return (<>
         <header className={header.header}>
+            <div className={header.logo}><img src='https://demo.wellthemes.com/velocity/wp-content/uploads/2019/12/logo.png'></img></div>
             <div>
                 {props.login
-                    ?<div>
+                    ?<div className={header.name}>
                         {props.login}
-                        <button onClick={LogOut}>Log out</button>
+                        <button onClick={LogOut}>LogOut</button>
                     </div>
                     : "You not authorized"
                 }

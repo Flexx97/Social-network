@@ -1,5 +1,4 @@
 .uBlock {
-    border: 1px solid #98FF98;
     width: 500px;
     height: 150px;
     display: grid;
@@ -30,11 +29,17 @@
     outline: none;
 }
 .number {
-    border: 1px solid red;
     margin: 3px;
     cursor: pointer;
 }
+.number :hover {
+    background-color: #f0f0;
+}
 .numberActive {
-    color: gold;
+    border-bottom: 1px solid red;
     cursor: pointer;
+}
+.numb{
+    display: flex;
+    align-items: center;
 }

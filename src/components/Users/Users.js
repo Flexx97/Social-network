@@ -26,8 +26,8 @@ let Users = (props) => {
 
 
     return <div>
-        <div>
-            <span onClick={() => prevPage()}>Next</span>
+        <div className={style.numb}>
+            <span onClick={() => prevPage()} className={'material-icons'}>arrow_back_ios</span>
             <span>
                 {props.page.map((u) => {
                         return (<span className={`${u === props.pageNumber && style.numberActive} ${style.number}`}
@@ -37,7 +37,7 @@ let Users = (props) => {
                     }
                 )}
             </span>
-            <span onClick={() => nextPage()}>Next</span>
+            <span onClick={() => nextPage()} className={'material-icons'}>arrow_forward_ios</span>
         </div>
         {
             props.userState.map(u =>

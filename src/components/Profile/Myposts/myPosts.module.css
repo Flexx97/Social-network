@@ -1,18 +1,20 @@
 .myp {
-    margin: 20px 50px;
+    margin: 20px 50px ;
     position: relative;
+    padding:10px;
+    background-color: #796CBA;
 }
 
 .textarea {
-    width: 300px;
-    border-radius: 10px;
+    width: 100%;
     outline: none;
 }
 
 .btn {
-    color: gold;
-    position: absolute;
-    margin-left: 5px;
+    background: #9278f8;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
 }
 
 .post {
