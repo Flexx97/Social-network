@@ -19,7 +19,6 @@ const MyPosts = (props) => {
             <div>New posts</div>
             <PostReduxForm onSubmit={submit}/>
         </div>
-        <div className={my.post}>My post</div>
         {newPostDate}
     </div>
 }

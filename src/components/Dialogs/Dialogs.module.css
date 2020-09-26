@@ -3,8 +3,7 @@
     grid-template-columns: 2fr 10fr;
 }
 .active {
-    background-color: #63f567;
-    border-radius: 5px;
+    background-color: #856df8;
 }
 .dialogs {
 margin: 20px;
@@ -24,11 +23,21 @@ margin: 20px;
     padding-left: 5px;
 }
 .send {
-    width: 300px;
-    border-radius: 10px;
+    width: 95%;
     outline: none;
+    margin: 15px;
+    padding: 10px;
 }
 .btn {
     width: 45px;
     height: 25px;
+    background: #9278f8;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+form {
+    background-color: #796CBA;
 }

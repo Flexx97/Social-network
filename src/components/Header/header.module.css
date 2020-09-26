@@ -1,4 +1,27 @@
 .header {
     grid-area: header;
-    background-color: #00BFFF;
+    background-color: #8376f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    margin-left: 10px;
+}
+.logo img {
+    height: 50px;
+    width: 100px;
+}
+.name {
+    font-family: 'Hind', sans-serif;
+    font-size: 20px;
+    margin-right: 10px;
+}
+.name button {
+    margin-left: 10px;
+    background: #9278f8;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
 }

@@ -5,14 +5,14 @@ import BestFriendsContainer from "../BestFriends/BestFriendsContainer";
 
 const Nav = (props) => {
     return (<nav className={nav.nav}>
-        <NavLink to='/profile' className={nav.item} activeClassName={nav.active}>Profile</NavLink>
-        <NavLink to='/dialogs' className={nav.item} activeClassName={nav.active}>Messages</NavLink>
-        <NavLink to='/users' className={nav.item} activeClassName={nav.active}>Users</NavLink>
-        <NavLink to='/news' className={nav.item} activeClassName={nav.active}>News</NavLink>
-        <NavLink to='/music' className={nav.item} activeClassName={nav.active}>Music</NavLink>
+        <NavLink to='/profile' className={nav.item} activeClassName={nav.active}><span class="material-icons">person_outline</span>Profile</NavLink>
+        <NavLink to='/dialogs' className={nav.item} activeClassName={nav.active}><span class="material-icons">mail</span>Messages</NavLink>
+        <NavLink to='/users' className={nav.item} activeClassName={nav.active}><span class="material-icons">group</span>Users</NavLink>
+        <NavLink to='/news' className={nav.item} activeClassName={nav.active}><span class="material-icons">fiber_new</span>News</NavLink>
+        <NavLink to='/music' className={nav.item} activeClassName={nav.active}><span class="material-icons">library_music</span>Music</NavLink>
         <NavLink to='settings' className={`${nav.item} ${nav.important}`}
-                 activeClassName={nav.active}>Settings</NavLink>
-        <div className={`${nav.best} ${nav.item}`}><BestFriendsContainer/></div>
+                 activeClassName={nav.active}><span class="material-icons">settings</span>Settings</NavLink>
+        
     </nav>);
 }
 

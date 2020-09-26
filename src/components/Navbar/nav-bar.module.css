@@ -1,19 +1,16 @@
 .nav {
     grid-area: nav;
-background-color: #40E0D0;
+background-color: #856df8;
 display: block;
 
 }
 .item {
-    display: block;
-
+    display: flex;
     margin: 10px 30px;
     font-family: 'Baloo Da 2', cursive;
-    text-align: center;
-}
-.active {
-    background: #3fcebf;
-    border-radius: 30px;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
 }
 .best {
     margin-top: 50px;

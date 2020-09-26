@@ -9,5 +9,9 @@
 
 .app-wrapper-content {
     grid-area: content;
-    background-color: #76FF7A;
+    background-color: #856df8;
 }
+.material-icons {
+    cursor: pointer;
+}
+
