@@ -1,0 +1,34 @@
+form { 
+    background-color: #856df8;
+    
+}
+.login {
+    margin-bottom: 5px;
+    border: 1px solid #ECEFF6;
+    border-radius: 1px;
+    padding: 10px 15px 6px;
+    transition: border .1s ease-out;
+    background: #FCFDFE;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px 0 #E8EDF7 inset;
+    font-size: 17px;
+    outline: none;
+}
+.password {
+    border: 1px solid #ECEFF6;
+    border-radius: 1px;
+    padding: 10px 15px 6px;
+    transition: border .1s ease-out;
+    background: #FCFDFE;
+    box-sizing: border-box;
+    box-shadow: 0 0 5px 0 #E8EDF7 inset;
+    font-size: 17px;
+    outline: none;
+}
+.btn {
+    background: #9278f8;
+    border: 0;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+}

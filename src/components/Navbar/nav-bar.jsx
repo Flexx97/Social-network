@@ -1,7 +1,6 @@
 import React from 'react';
 import nav from './nav-bar.module.css';
 import {NavLink} from "react-router-dom";
-import BestFriendsContainer from "../BestFriends/BestFriendsContainer";
 
 const Nav = (props) => {
     return (<nav className={nav.nav}>

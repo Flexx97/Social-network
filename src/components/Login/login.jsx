@@ -3,16 +3,17 @@ import {Field, reduxForm} from "redux-form";
 import {getLogIn} from "../../redux/Auth-reducer";
 import {connect} from "react-redux";
 import {Redirect} from "react-router-dom";
+import style from "./login.module.css"
 
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder='Login' component='input' type='textarea' name='login'/>
+                <Field placeholder='Username or Password' component='input' type='textarea' name='login' className={style.login}/>
             </div>
             <div>
-                <Field placeholder='Password' component='input' type='textarea' name='password'/>
+                <Field placeholder='Password' component='input' type='password' name='password' className={style.password}/>
             </div>
             <div>
                 <Field component='input' type='checkbox' name='rememberMe'/>
@@ -22,7 +23,7 @@ const LoginForm = (props) => {
                 {props.error}
             </div>
             <div>
-                <button>Log In</button>
+                <button className={style.btn}>Log In</button>
             </div>
         </form>
 
